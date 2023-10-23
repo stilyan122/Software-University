@@ -1,0 +1,15 @@
+div,section{
+    display: flex;
+}
+div{
+    max-width: 65vw;
+}
+span{
+    border: 1px solid black;
+}
+.notes{
+    flex-direction: column;
+}
+html{
+    box-sizing: border-box;
+}

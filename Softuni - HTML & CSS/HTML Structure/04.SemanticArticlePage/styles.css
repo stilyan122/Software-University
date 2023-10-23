@@ -1,0 +1,19 @@
+body{
+    background-color: #e4e978;
+    margin: 15px 10px;
+    width: 700px;
+}
+article{
+    padding: 5px 15px;
+    background-color: #f2f4c0;
+	border: 1px solid #b2ad7d;
+}
+section.sectionClass{
+    font-style: italic;
+}
+section.sectionClass p{
+    color: #5c6e91;
+}
+article h2{
+    color:#4c7658;
+}

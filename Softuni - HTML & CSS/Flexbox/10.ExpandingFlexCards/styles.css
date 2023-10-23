@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(238, 238, 238);
+    overflow: hidden;
+}
+.container,
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    gap:30px;
+    justify-content: stretch;
+}
+img{
+    border-radius: 10px;
+}
+img:not(:nth-child(2)){
+    width: 100px;
+    height: 400px;
+    object-fit: cover;
+}
+img:nth-child(2){
+    border-right: 15px solid black;
+    border-left: 15px solid black;
+}

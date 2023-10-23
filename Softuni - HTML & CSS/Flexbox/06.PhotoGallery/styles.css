@@ -1,0 +1,24 @@
+body,ul,li{
+display: flex;
+flex-wrap: wrap;
+gap:5px;
+}
+body{
+    width: 1200px;
+    background-color: lightgray ;
+}
+ul{
+    justify-content: space-between;
+}
+li{
+    list-style:none;
+    vertical-align: middle;
+}
+div{
+    display: flex;
+    border:10px solid black;
+    padding:30px;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+}
