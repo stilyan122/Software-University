@@ -22,4 +22,4 @@
 
 ![image](https://user-images.githubusercontent.com/117260079/221432819-b8d49b40-316b-4f38-8022-dba73055ea17.png)
 
-![Data Structures Fundamentals (with C#) - September 2023 - Certificate](https://github.com/stilyan122/Software-University/assets/117260079/6eeece35-2966-4f67-9131-31572d4e112d)
+![Data Structures Fundamentals (with C#) - September 2023 - Certificate (1)](https://github.com/stilyan122/Software-University/assets/117260079/760748dd-1dbc-4800-9c55-f98f03799839)
