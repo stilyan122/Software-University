@@ -1,0 +1,33 @@
+html{
+    font-family:Helvetica, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family:Georgia, serif;
+
+}
+blockquote{
+    border-left-color:rgb(221,221,221);
+    font-style:italic;
+}
+table{
+    border:1px solid lightslategray;
+    height:300px;
+    width:100%;
+    border-color:gray
+}
+.first{
+    background-color: darkgray;
+    text-align: left;
+    font-weight: bold;
+    border-color:gray
+}
+.even{
+    background-color: #D0D0D0;
+    border-color:gray
+}
+.odd{
+    background-color: #E0E0E0;
+    border-color:gray
+}

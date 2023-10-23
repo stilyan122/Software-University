@@ -1,0 +1,20 @@
+html{
+    font-family:Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(238, 238, 238);
+    color:rgb(51, 51, 51);
+}
+header,aside{
+    display: inline-block;
+}
+aside{
+    text-align: right;
+}
+aside h1,
+aside ul li{
+    text-align: left;
+}
+header,section,footer,img{
+    width: 60%;
+}
