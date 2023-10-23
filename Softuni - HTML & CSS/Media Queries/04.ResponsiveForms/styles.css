@@ -1,0 +1,117 @@
+@import url("https://use.fontawesome.com/releases/v5.10.2/css/all.css");
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+fieldset{
+    margin-top:16px;
+    position: relative;
+    padding:30px;
+    width: 400px;
+    border:1px solid black;
+    border-radius: 4px;
+    background-color: rgb(246, 244, 244);
+}
+fieldset p{
+    font-weight: bold;
+    width: 70px;
+}
+fieldset div{
+    display: flex;
+    gap:10px;
+    justify-content: left;
+    align-items: center;
+}
+button{
+    color:white;
+    background-color: black;
+    padding:8px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top:30px;
+    cursor: pointer;
+}
+fieldset input{
+    height: 20px;
+    width: 300px;
+}
+i{
+    position: absolute;
+    left:25%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.login{
+    position: absolute;
+    border:1px solid black;
+    width: 100px;
+    z-index: 10;
+    padding:8px 15px;
+    background-color: rgb(246, 244, 244);
+    font-weight: bold;
+    border:1px solid black;
+    border-radius: 4px;
+}
+input:focus{
+    background-color: antiquewhite;
+}
+@media(max-width:1000px ) and ( min-width:500px){
+    body{
+        justify-content: flex-start;
+    }
+    fieldset{
+     width: 80%;
+     margin:5%;
+    }
+    fieldset div{
+     flex-direction: column;
+     align-items: flex-start;
+    }
+    p{
+     margin:0;
+     margin-top:10px;
+    }
+    .login{
+     margin-left:3.4%;
+    }
+    i{
+     left:10%;
+    }
+    .fa-user{
+     top:72px;
+    }
+    .fa-key{
+     top:136px;
+    }
+ }
+@media(max-width:500px){
+    fieldset{
+    width: 80%;
+    margin:5%;
+   }
+   fieldset div{
+    flex-direction: column;
+    align-items: flex-start;
+   }
+   p{
+    margin:0;
+    margin-top:10px;
+   }
+   .login{
+    margin-left:3.9%;
+   }
+   i{
+    left:10%;
+   }
+   .fa-user{
+    top:72px;
+   }
+   .fa-key{
+    top:136px;
+   }
+}

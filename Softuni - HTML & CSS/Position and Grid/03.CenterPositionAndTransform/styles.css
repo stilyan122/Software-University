@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(238, 238, 238);
+    margin:0;
+    overflow: hidden;
+}
+img{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.card{
+    background-color: rgb(255, 255, 255);
+    display:grid;
+    position:relative;
+    top: 50%;
+    left: 50%;
+    grid-template-rows: 60% 40%;
+    border-radius: 8px;
+    grid-template-areas:
+    'top'
+    'bottom';
+    width: 500px;
+    height: 500px;
+    transform: translate(-50%,-50%);
+    box-shadow: 5px 5px 14px 5px rgba(0,0,0,0.39);
+}
+.card h3{
+    margin-left:30px;
+    margin-bottom:10px;
+}
+.card p{
+    margin:0px;
+}
+.card a{
+    background-color: rgb(0, 153, 0);
+    float:right;
+    padding:8px 14px;
+    color:#fff;
+    margin-right: 20px;
+    border-radius: 4px;
+    margin-top:-10px;
+}
+.card h2{
+    font-family:Georgia, serif;
+    font-size:1.2;
+}
+.card p{
+    font-size: 20px;
+    margin-left:30px;
+    margin-bottom:40px;
+}
+img{
+    position:absolute;
+    margin-bottom:20px;
+    bottom: 35%;
+    overflow:hidden;
+}
+div:nth-child(1){
+    grid-area:top;
+}
+div:nth-child(2){
+    grid-area:bottom;
+    font-size:1em;
+}
