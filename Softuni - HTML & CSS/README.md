@@ -22,10 +22,5 @@
 
 ![image](https://user-images.githubusercontent.com/117260079/221432819-b8d49b40-316b-4f38-8022-dba73055ea17.png)
 
-![HTML   CSS - May 2023 - Certificate](https://github.com/stilyan122/Software-University/assets/117260079/22833b9b-a831-4b49-b5f7-722d1a171649)
-
-
-
-
-
+![HTML   CSS - May 2023 - Certificate](https://github.com/stilyan122/Software-University/assets/117260079/ba9df52c-aded-457c-b620-e98dfb1a667f)
 
