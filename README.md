@@ -4,6 +4,6 @@
 ## --- https://softuni.bg
 ## --- https://judge.softuni.org
 
-![image](https://github.com/stilyan122/Software-University/assets/117260079/32d65e40-6dcf-4052-b3b8-864b91ab44c3)
+![image](https://github.com/stilyan122/Software-University/assets/117260079/be35656f-714d-4548-b563-ed3e37ebf7ef)
 
-![image](https://github.com/stilyan122/Software-University/assets/117260079/d75564e8-65bd-4400-bc94-cd9976ecb1e3)
+![image](https://github.com/stilyan122/Software-University/assets/117260079/224f1e7c-5120-4b34-b506-53a05fe14744)
