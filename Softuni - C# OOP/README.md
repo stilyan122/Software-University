@@ -22,5 +22,5 @@
 
 ![image](https://user-images.githubusercontent.com/117260079/221432819-b8d49b40-316b-4f38-8022-dba73055ea17.png)
 
-![C# OOP - February 2023 - Certificate](https://github.com/stilyan122/Software-University/assets/117260079/242345d9-a714-427b-b07b-59feb81d812f)
+![C# OOP - February 2023 - Certificate](https://github.com/stilyan122/Software-University/assets/117260079/6c59c834-1b2f-404f-9b5c-56148dde30ff)
 
