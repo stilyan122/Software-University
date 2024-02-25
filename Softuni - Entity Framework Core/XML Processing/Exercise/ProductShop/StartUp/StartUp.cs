@@ -125,6 +125,71 @@ namespace ProductShop
             return $"Successfully imported {categoriesProducts.Length}";
         }
 
+        // --05.
+        public static string GetProductsInRange(ProductShopContext context)
+        {
+            var products = context
+                .Products
+                .Include(x => x.Buyer)
+                .Where(x => x.Price >= 500 && x.Price <= 1000)
+                .OrderBy(x => x.Price)
+                .Select(x => new ProductDTOExport()
+                {
+                    Name = x.Name,
+                    Price = (double)x.Price,
+                    BuyerName = x.Buyer.FirstName + " " + x.Buyer.LastName
+                })
+                .Take(10)
+                .ToArray();
+
+            return ReturnXml(products, "Products");
+        }
+
+        // --06.
+        public static string GetSoldProducts(ProductShopContext context)
+        {
+            var users = context
+                .Users
+                .Where(x => x.ProductsSold.Any())
+                .OrderBy(x => x.LastName)
+                .ThenBy(x => x.FirstName)
+                .Select(x => new UserDTOExport()
+                {
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    SoldProducts = x.ProductsSold
+                    .Select(p => new ProductDTOExport2()
+                    {
+                        Name = p.Name,
+                        Price = (double)p.Price
+                    }).ToArray()
+                })
+                .Take(5)
+                .ToArray();
+
+            return ReturnXml(users, "Users");
+        }
+
+        // --07.
+        public static string GetCategoriesByProductsCount(ProductShopContext
+            context)
+        {
+            var categories = context
+                .Categories
+                .Select(x => new CategoryDTOExport()
+                {
+                    Name = x.Name,
+                    ProductsCount = x.CategoryProducts.Count,
+                    AveragePrice = x.CategoryProducts.Average(x => x.Product.Price),
+                    TotalRevenue = x.CategoryProducts.Sum(x => x.Product.Price)
+                })
+                .OrderByDescending(x => x.ProductsCount)
+                .ThenBy(x => x.TotalRevenue)
+                .ToArray();
+
+            return ReturnXml(categories, "Categories");
+        }
+
         // --08.
         public static string GetUsersWithProducts(ProductShopContext
             context)
