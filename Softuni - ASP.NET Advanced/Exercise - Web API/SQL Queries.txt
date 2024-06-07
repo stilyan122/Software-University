@@ -1,0 +1,5 @@
+INSERT INTO Products([Name], [Description])
+VALUES
+('Cheese', 'From sheep milk'),
+('Orange juice', 'Fresh, from our best fruits'),
+('Apple', 'Type: red delicious');

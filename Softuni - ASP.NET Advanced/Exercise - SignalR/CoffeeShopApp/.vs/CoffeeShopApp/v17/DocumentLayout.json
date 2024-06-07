@@ -1,0 +1,143 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\controllers\\coffeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\controllers\\coffeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\hubs\\coffeehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\hubs\\coffeehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\views\\coffee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\views\\coffee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|c:\\users\\jerry\\documents\\stilyan\\programming\\software university\\softuni - asp.net advanced\\exercise - signalr\\coffeeshopapp\\coffeeshopapp\\wwwroot\\js\\coffee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{944584F4-2F17-416C-B01B-254A10DF905C}|CoffeeShopApp\\CoffeeShopApp.csproj|solutionrelative:coffeeshopapp\\wwwroot\\js\\coffee.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "CoffeeShopApp\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-09T12:58:47.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "CoffeeShopApp\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-09T12:58:46.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "coffee.js",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\wwwroot\\js\\coffee.js",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\wwwroot\\js\\coffee.js",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\wwwroot\\js\\coffee.js",
+              "RelativeToolTip": "CoffeeShopApp\\wwwroot\\js\\coffee.js",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACgAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-09T12:50:23.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Views\\Coffee\\Index.cshtml",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\Views\\Coffee\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Views\\Coffee\\Index.cshtml",
+              "RelativeToolTip": "CoffeeShopApp\\Views\\Coffee\\Index.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAQAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-09T12:36:03.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Program.cs",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\Program.cs",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Program.cs",
+              "RelativeToolTip": "CoffeeShopApp\\Program.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAACkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T12:33:24.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CoffeeController.cs",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Controllers\\CoffeeController.cs",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\Controllers\\CoffeeController.cs",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Controllers\\CoffeeController.cs",
+              "RelativeToolTip": "CoffeeShopApp\\Controllers\\CoffeeController.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAADgvwkAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T12:31:43.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CoffeeHub.cs",
+              "DocumentMoniker": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Hubs\\CoffeeHub.cs",
+              "RelativeDocumentMoniker": "CoffeeShopApp\\Hubs\\CoffeeHub.cs",
+              "ToolTip": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\Hubs\\CoffeeHub.cs",
+              "RelativeToolTip": "CoffeeShopApp\\Hubs\\CoffeeHub.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T12:29:45.581Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

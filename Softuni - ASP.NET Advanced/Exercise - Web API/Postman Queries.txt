@@ -1,0 +1,21 @@
+POST
+
+{
+    "id": 4,
+    "name": "Fish",
+    "description": "Tuna with a special sauce"
+}
+
+PUT
+
+{
+    "id": 4,
+    "name": "Modified Fish",
+    "description": "Tuna with a special sauce"
+}
+
+PATCH
+
+{
+    "name": "New Fish"
+}

@@ -1,0 +1,20 @@
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using static HouseRentingSystem.Data.DataConstants.Agent;
+
+namespace HouseRentingSystem.Data.Models
+{
+    public class Agent
+    {
+        public int Id { get; init; }
+
+        [Required]
+        [MaxLength(PhoneNumberMaxLength)]
+        public string PhoneNumber { get; set; } = null!;
+
+        [Required]
+        public string UserId { get; set; } = null!;
+
+        public IdentityUser User { get; set; } = null!;
+    }
+}

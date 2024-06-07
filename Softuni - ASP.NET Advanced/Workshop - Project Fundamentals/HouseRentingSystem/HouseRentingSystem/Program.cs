@@ -1,3 +1,4 @@
+using HouseRentingSystem.Core;
 using HouseRentingSystem.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -10,22 +11,7 @@ namespace HouseRentingSystem
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = true;
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase    = false;
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddDBModules(builder.Configuration);
 
             var app = builder.Build();
 
