@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "fo/3Gh2EoV/lrxIgKS/hwprrM55WF5fldLgpVc4+Zj+1PuGdWMwM2aGkL8u4HvhZuVO61hp2+xD05TTGubS9/Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Jerry\\Documents\\Stilyan\\Programming\\Software University\\Softuni - ASP.NET Advanced\\Exercise - SignalR\\CoffeeShopApp\\CoffeeShopApp\\CoffeeShopApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Jerry\\.nuget\\packages\\messagepack\\2.5.108\\messagepack.2.5.108.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\messagepack.annotations\\2.5.108\\messagepack.annotations.2.5.108.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\8.0.3\\microsoft.aspnetcore.connections.abstractions.8.0.3.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\8.0.3\\microsoft.aspnetcore.signalr.common.8.0.3.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.messagepack\\8.0.3\\microsoft.aspnetcore.signalr.protocols.messagepack.8.0.3.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.extensions.features\\8.0.3\\microsoft.extensions.features.8.0.3.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\microsoft.net.stringtools\\17.4.0\\microsoft.net.stringtools.17.4.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
+    "C:\\Users\\Jerry\\.nuget\\packages\\system.text.json\\8.0.3\\system.text.json.8.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
