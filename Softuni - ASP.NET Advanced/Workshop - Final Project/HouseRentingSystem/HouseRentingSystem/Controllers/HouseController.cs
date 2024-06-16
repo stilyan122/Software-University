@@ -40,9 +40,9 @@ namespace HouseRentingSystem.Controllers
 
         public async Task<IActionResult> Mine()
         {
-            IEnumerable<HouseServiceModel> myHouses = null;
-
             var userId = User.Id();
+
+            IEnumerable<HouseServiceModel>? myHouses;
 
             if (await _agents.ExistsById(userId))
             {

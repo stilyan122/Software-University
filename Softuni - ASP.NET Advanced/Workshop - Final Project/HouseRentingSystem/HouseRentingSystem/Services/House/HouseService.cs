@@ -4,20 +4,24 @@ using HouseRentingSystem.Services.Agent;
 using HouseRentingSystem.Infrastructure.Enums;
 using HouseType = HouseRentingSystem.Infrastructure.Models.House;
 using Microsoft.EntityFrameworkCore;
+using HouseRentingSystem.Contracts.ApplicationUser;
 
 namespace HouseRentingSystem.Services.House
 {
     public class HouseService : IHouseService
     {
         private readonly ApplicationDbContext _data;
+        private readonly IApplicationUserService _user;
 
-        public HouseService(ApplicationDbContext data)
+        public HouseService(ApplicationDbContext data,
+            IApplicationUserService user)
         {
             _data = data;
+            _user = user;
         }
 
-        public HouseQueryServiceModel All(string category = null, 
-            string searchTerm = null, 
+        public HouseQueryServiceModel All(string? category = null, 
+            string? searchTerm = null, 
             HouseSorting sorting = HouseSorting.Newest,
             int currentPage = 1, 
             int housesPerPage = 1)
@@ -172,7 +176,7 @@ namespace HouseRentingSystem.Services.House
         {
             var house = await _data.Houses.FindAsync(houseId);
 
-            return house.CategoryId;
+            return house?.CategoryId ?? 1;
         }
 
         public async Task<bool> HasAgentWithId(int houseId, string currentUserId)
@@ -206,8 +210,9 @@ namespace HouseRentingSystem.Services.House
                     Address = h.Address,
                     Agent = new AgentServiceModel()
                     {
-                        Email = h.Agent.User.Email,
-                        PhoneNumber = h.Agent.PhoneNumber
+                        Email = h.Agent.User.Email ?? "email@gmail.com",
+                        PhoneNumber = h.Agent.PhoneNumber ?? "0899999999",
+                        FullName = _user.UserFullName(h.Agent.UserId ?? "1").ToString() ?? "Name Name"
                     },
                     Category = h.Category.Name,
                     ImageUrl = h.ImageUrl,
@@ -274,7 +279,7 @@ namespace HouseRentingSystem.Services.House
             await _data.SaveChangesAsync();
         }
 
-        private List<HouseServiceModel> ProjectToModel(List<HouseType> houses)
+        private static List<HouseServiceModel> ProjectToModel(List<HouseType> houses)
         {
             var resultHouses = houses
                 .Select(h => new HouseServiceModel()

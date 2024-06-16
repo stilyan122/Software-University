@@ -1,6 +1,6 @@
 ﻿using HouseRentingSystem.Contracts.House;
 using System.ComponentModel.DataAnnotations;
-using static HouseRentingSystem.Data.DataConstants.House;
+using static HouseRentingSystem.Infrastructure.DataConstants.House;
 
 namespace HouseRentingSystem.Models.House
 {

@@ -8,6 +8,9 @@ using HouseRentingSystem.Services.House;
 using HouseRentingSystem.Services.Statistic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using HouseRentingSystem.Contracts.ApplicationUser;
+using HouseRentingSystem.Services.ApplicationUser;
 
 namespace HouseRentingSystem
 {
@@ -38,6 +41,7 @@ namespace HouseRentingSystem
             builder.Services.AddTransient<IHouseService, HouseService>();
             builder.Services.AddTransient<IAgentService, AgentService>();
             builder.Services.AddTransient<IStatisticService, StatisticService>();
+            builder.Services.AddTransient<IApplicationUserService, ApplicationUserService>();
             
             builder.Services.AddControllersWithViews(options =>
             {

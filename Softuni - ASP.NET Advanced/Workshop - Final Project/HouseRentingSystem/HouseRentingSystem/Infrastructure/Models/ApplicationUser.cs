@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using static HouseRentingSystem.Data.DataConstants.ApplicationUser;
+using static HouseRentingSystem.Infrastructure.DataConstants.ApplicationUser;
 
 namespace HouseRentingSystem.Infrastructure.Models
 {

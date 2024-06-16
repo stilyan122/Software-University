@@ -2,28 +2,33 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using static HouseRentingSystem.Infrastructure.DataConstants.AdminUser;
 
 namespace HouseRentingSystem.Infrastructure
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        private ApplicationUser AgentUser { get; set; }
+        private ApplicationUser AdminUser { get; set; } = null!;
 
-        private ApplicationUser GuestUser { get; set; }
+        private Agent AdminAgent { get; set; } = null!;
 
-        private Agent Agent { get; set; }
+        private ApplicationUser AgentUser { get; set; } = null!;
 
-        private Category CottageCategory { get; set; }
+        private ApplicationUser GuestUser { get; set; } = null!;
 
-        private Category SingleCategory { get; set; }
+        private Agent Agent { get; set; } = null!;
 
-        private Category DuplexCategory { get; set; }
+        private Category CottageCategory { get; set; } = null!;
 
-        private House FirstHouse { get; set; }
-        
-        private House SecondHouse { get; set; } 
+        private Category SingleCategory { get; set; } = null!;
 
-        private House ThirdHouse { get; set; }
+        private Category DuplexCategory { get; set; } = null!;
+
+        private House FirstHouse { get; set; } = null!;
+
+        private House SecondHouse { get; set; } = null!;
+
+        private House ThirdHouse { get; set; } = null!;
 
         public DbSet<House> Houses { get; set; } = null!;
 
@@ -55,12 +60,12 @@ namespace HouseRentingSystem.Infrastructure
             SeedUsers();
 
             builder.Entity<ApplicationUser>()
-                .HasData(AgentUser, GuestUser);
+                .HasData(AgentUser, GuestUser, AdminUser);
 
             SeedAgent();
 
             builder.Entity<Agent>()
-                .HasData(Agent);
+                .HasData(Agent, AdminAgent);
 
             SeedCategories();
 
@@ -91,7 +96,9 @@ namespace HouseRentingSystem.Infrastructure
                 Email = "agent@mail.com",
                 NormalizedEmail = "agent@mail.com",
                 FirstName = "Linda",
-                LastName = "Michaels"
+                LastName = "Michaels",
+                PhoneNumberConfirmed = true,
+                EmailConfirmed = true
             };
 
             AgentUser.PasswordHash =
@@ -105,11 +112,28 @@ namespace HouseRentingSystem.Infrastructure
                 Email = "guest@mail.com",
                 NormalizedEmail = "guest@mail.com",
                 FirstName = "Teodor",
-                LastName = "Lesly"
+                LastName = "Lesly",
+                PhoneNumberConfirmed = true,
+                EmailConfirmed = true
             };
 
             GuestUser.PasswordHash =
             hasher.HashPassword(AgentUser, "guest123");
+
+            AdminUser = new ApplicationUser()
+            {
+                Id = "bcb4f072-ecca-43c9-ab26-c060c6f364e4",
+                Email = AdminEmail,
+                NormalizedEmail = AdminEmail,
+                UserName = AdminEmail,
+                NormalizedUserName = AdminEmail,
+                FirstName = "Great",
+                LastName = "Admin",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true
+            };
+
+            AdminUser.PasswordHash = hasher.HashPassword(AgentUser, "admin123");
         }
 
         private void SeedAgent()
@@ -119,6 +143,13 @@ namespace HouseRentingSystem.Infrastructure
                 Id = 1,
                 PhoneNumber = "+359888888888",
                 UserId = AgentUser.Id
+            };
+
+            AdminAgent = new Agent()
+            {
+                Id = 5,
+                PhoneNumber = "+359123456789",
+                UserId = AdminUser.Id
             };
         }
 

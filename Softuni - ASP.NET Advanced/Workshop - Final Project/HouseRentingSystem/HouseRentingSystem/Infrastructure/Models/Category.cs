@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static HouseRentingSystem.Data.DataConstants.Category;
+using static HouseRentingSystem.Infrastructure.DataConstants.Category;
 
 namespace HouseRentingSystem.Infrastructure.Models
 {
