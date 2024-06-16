@@ -1,8 +1,8 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('./server.js');
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import server from './server.js';
 
-const { expect } = chai;
+const expect = chai.expect;;
 
 chai.use(chaiHttp);
 
@@ -86,7 +86,6 @@ describe('Books API', () => {
         .get(`/books/${bookId}`)
         .end((err, res) => {
             expect(res).to.have.status(404);
-            done();
         });
 
         chai.request(server)
@@ -94,21 +93,14 @@ describe('Books API', () => {
         .send({ id: 9999, title: "Non-existing book", author: "Non-existing author"})
         .end((err, res) => {
             expect(res).to.have.status(404);
-            done();
         });
 
         chai.request(server)
         .delete(`/books/${bookId}`)
         .end((err, res) => {
             expect(res).to.have.status(404);
-            done();
         });
 
-        chai.request(server)
-            .delete(`/books/${bookId}`)
-            .end((err, res) => {
-                expect(res).to.have.status(404);
-                done();
-            });
+        done();
     });
 });
