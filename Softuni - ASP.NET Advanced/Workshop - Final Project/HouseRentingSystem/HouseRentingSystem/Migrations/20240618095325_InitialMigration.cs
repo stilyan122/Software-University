@@ -230,8 +230,9 @@ namespace HouseRentingSystem.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e", 0, "11747b9e-c904-42df-992d-29f303c1b132", "guest@mail.com", false, "Teodor", "Lesly", false, null, "guest@mail.com", "guest@mail.com", "AQAAAAIAAYagAAAAEPU7waoGSgL4rlaSA5OC1JRYfMKiDRmGMWwVrKaIVIjPlEbsFxoKmnvmELzLvEI2HA==", null, false, "1fb0c43f-ec30-41cb-b318-80f6c5e43bd7", false, "guest@mail.com" },
-                    { "dea12856-c198-4129-b3f3-b893d8395082", 0, "b06866cc-e045-4e4d-95ad-e7290a5a3d84", "agent@mail.com", false, "Linda", "Michaels", false, null, "agent@mail.com", "agent@mail.com", "AQAAAAIAAYagAAAAECTFXycu29QvrrpQOEXRgqL2ba+xBmsgtJ1QlqtEEpPTCChovwssEr30ZhP5DsRgvA==", null, false, "ac4caf87-e7a1-47b1-a5a6-805fb1eea027", false, "agent@mail.com" }
+                    { "6d5800ce-d726-4fc8-83d9-d6b3ac1f591e", 0, "dad51dcb-4730-4efe-9426-27b179a2fbd7", "guest@mail.com", true, "Teodor", "Lesly", false, null, "guest@mail.com", "guest@mail.com", "AQAAAAIAAYagAAAAEMxUezNkDT2gZMdd7SM/6/T9qLGpyhYSRrdkfnSTXR2brw8ylNL19WGTVk9a8GKcDw==", null, true, "bc497295-5745-4dd6-a43c-ed7972e0c17e", false, "guest@mail.com" },
+                    { "bcb4f072-ecca-43c9-ab26-c060c6f364e4", 0, "f0d545a8-6522-4586-8ac2-9232c470c286", "admin@gmail.com", true, "Great", "Admin", false, null, "admin@gmail.com", "admin@gmail.com", "AQAAAAIAAYagAAAAEBtiU1197dkGxmGVT0qdeA8EnKUtmCKc/sy8DNQfflOs5d2jYppo3Z+aLGP+1RjdPw==", null, true, "ddd76c62-3d70-4d55-8830-66793676904d", false, "admin@gmail.com" },
+                    { "dea12856-c198-4129-b3f3-b893d8395082", 0, "1a945544-8d5b-48b6-a39b-b216c5f81791", "agent@mail.com", true, "Linda", "Michaels", false, null, "agent@mail.com", "agent@mail.com", "AQAAAAIAAYagAAAAEHJRscCoNqAeTX29Z+WTfjgO2u1oBRvutB8IhDyfEZJNjDRCRdcUQDwey5vdzP/8Tw==", null, true, "a1380a9e-513c-4d7e-b756-25254de44edd", false, "agent@mail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,7 +248,11 @@ namespace HouseRentingSystem.Migrations
             migrationBuilder.InsertData(
                 table: "Agents",
                 columns: new[] { "Id", "PhoneNumber", "UserId" },
-                values: new object[] { 1, "+359888888888", "dea12856-c198-4129-b3f3-b893d8395082" });
+                values: new object[,]
+                {
+                    { 1, "+359888888888", "dea12856-c198-4129-b3f3-b893d8395082" },
+                    { 5, "+359123456789", "bcb4f072-ecca-43c9-ab26-c060c6f364e4" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Houses",

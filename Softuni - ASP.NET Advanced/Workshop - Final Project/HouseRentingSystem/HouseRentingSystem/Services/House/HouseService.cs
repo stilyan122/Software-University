@@ -199,9 +199,14 @@ namespace HouseRentingSystem.Services.House
 
         public async Task<HouseDetailsServiceModel> HouseDetailsById(int houseId)
         {
-            return await _data
+            var houses = _data
                 .Houses
-                .Where(h => h.Id == houseId)
+                .Include(h => h.Agent)
+                .ThenInclude(a => a.User)
+                .Include(h => h.Category)
+                .Where(h => h.Id == houseId);
+
+            var house = await houses
                 .Select(h => new HouseDetailsServiceModel()
                 {
                     Id = h.Id,
@@ -219,6 +224,8 @@ namespace HouseRentingSystem.Services.House
                     IsRented = h.RenterId != null,
                     PricePerMonth = h.PricePerMonth
                 }).FirstOrDefaultAsync() ?? new HouseDetailsServiceModel();
+
+            return house;
         }
 
         public async Task<bool> IsRented(int houseId)

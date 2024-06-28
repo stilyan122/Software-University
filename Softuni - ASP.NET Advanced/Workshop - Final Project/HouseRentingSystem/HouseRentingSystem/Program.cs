@@ -48,6 +48,9 @@ namespace HouseRentingSystem
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
 
+            builder.Services
+                .AddRazorPages().AddRazorRuntimeCompilation();
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())

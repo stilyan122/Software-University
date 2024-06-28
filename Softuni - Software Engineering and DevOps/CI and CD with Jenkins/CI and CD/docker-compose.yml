@@ -1,0 +1,8 @@
+version: '3'
+services:
+  app:
+    image: stilyan123/studentsapp:latest
+    ports:
+      - "8081:8081"
+    environment:
+      - NODE_ENV=production
