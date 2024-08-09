@@ -1,0 +1,47 @@
+Exercises:
+
+4. Deploy the "Tracker" App to Azure
+
+Commands:
+
+- docker build -t tracker-app-image .
+
+- docker images
+
+- docker run --name tracker-app -d -p 80:80 tracker-app-image
+
+- az group create --name trackerapprg --location westeurope
+
+- az acr create --resource-group trackerapprg --name ... --sku Basic
+
+- az acr login --name ...
+
+- az acr show --name ... --query loginServer --output table
+
+- docker tag tracker-app-image .../tracker-app-image:v1
+
+- docker images
+
+- docker push .../tracker-app-image:v1
+
+- az acr repository list --name ...
+
+- $ACR_NAME='$...'
+
+- $SERVICE_PRINCIPAL_NAME='$...'
+
+- $ACR_REGISTRY_ID=$(az acr show --name ... --query "id" --output tsv)
+
+- $PASSWORD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query "password" --output tsv)
+
+- $USER_NAME=$(az ad sp list --display-name $SERVICE_PRINCIPAL_NAME --query "[].appId" --output tsv)
+
+- echo "Service principal ID: $USER_NAME"
+
+- echo "Service principal password: $PASSWORD"
+
+- az container create --resource-group ... --name ... --image .../...:v1 --cpu 1 --memory 1 --registry-login-server ... --registry-username ... --registry-password ... --ip-address Public --dns-name-label ... --ports 80
+
+- az container show --resource-group ... --name ... --query instaceView.state
+
+- az container show --resource-group ... --name ... --query ipAddress.fqdn

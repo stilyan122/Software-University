@@ -15,7 +15,7 @@ namespace Repainting
             double paintPrice = (paint + 0.10 * paint) * 14.50;
             double litersPrice = leters * 5.00;
             double materialSum = naylonPrice + paintPrice + litersPrice + 0.40;
-            double masters = materialSum * 0.30 * 8;
+            double masters = materialSum * 0.30 * hours;
             double totalSum = materialSum + masters;
             Console.WriteLine(totalSum);
         }

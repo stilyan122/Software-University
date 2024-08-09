@@ -1,0 +1,21 @@
+Exercises: 
+
+1. NGINX Docker Container:
+
+Commads:
+
+- terraform init
+
+- terraform fmt
+
+- terraform validate
+
+- terraform apply
+
+- terraform show
+
+(After update)
+
+- terraform apply
+
+- terraform destroy

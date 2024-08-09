@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  vote:
+    build: /vote
+    command: python app.py
+    volumes:
+      - ./vote:/app
+    ports:
+      - "5000:80"
+    networks:
+      - frontend
+      - backend
+
+  result:
+    build: /result
+    command: node server.js
+    volumes:
+      - ./result:/app
+    ports:
+      - "5001:80"
+    networks:
+      - frontend
+      - backend
+
+  redis:
+    image: redis:latest
+    networks:
+      - backend
+
+  worker:
+    build: /Worker
+    networks:
+      - backend
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "server-db"
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    networks:
+      - backend
+
+volumes:
+  db-data:
+
+networks:
+  frontend:
+  backend:

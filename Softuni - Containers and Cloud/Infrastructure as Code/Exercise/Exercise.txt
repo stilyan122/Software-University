@@ -1,0 +1,61 @@
+Exercises: 
+
+1. Azure Resource Group
+
+Commads:
+
+- terraform fmt
+
+- terraform init
+
+- terraform plan
+
+- terraform apply
+
+- terraform destroy
+
+2. Azure Web App
+
+Commands:
+
+- terraform init
+
+- terraform plan
+
+- terraform apply
+
+- terraform destroy
+
+3. Azure Web App with Database
+
+=> Write and Apply a Terraform Configuration 
+
+Commands:
+
+- terraform init
+
+- terraform plan
+
+- terraform apply
+
+- terraform destroy
+
+=> Separate Configuration to Multiple Files
+
+(Make Terraform files)
+
+- terraform apply
+
+- terraform apply -var-file="values.tfvars"
+
+- terraform apply -var-file="values.tfvars"
+
+4. Terraform with CI & CD
+
+- az ad sp create-for-rbac --name ... --role contributor --scopes /subscriptions/... --sdk-auth
+
+(Upload YAML file(s))
+
+- az storage account create --name ... --resource-group ... --location ... --sku ... --kind …
+
+- az storage container create -n ... --account-name ...

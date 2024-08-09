@@ -1,0 +1,52 @@
+Exercises:
+
+2. Getting to Know the Console
+
+Commands:
+
+- pwd
+
+- ls
+
+- ls -al
+
+- ls -a
+
+- ls -al /
+
+- cd /etc
+- pwd
+
+- ls os*
+
+- cat os-release
+
+- uname -a
+
+- hostname
+
+- cd
+- pwd
+
+- cat /etc/hostname
+
+- cat /etc/machine-info
+
+- logout
+
+- date
+
+- date +%Y-%m-%d
+
+- cal -3
+
+- uptime
+
+- history
+
+- exit
+- logout
+
+- ls -a
+
+- cat .bash_history

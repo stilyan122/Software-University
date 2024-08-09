@@ -1,0 +1,35 @@
+Exercises:
+
+2. Getting to Know the Console
+
+Commands:
+
+- set | less
+
+- set -o
+
+- set +o
+
+- set -x
+
+- pwd
+
+- ls -al
+
+- set +x
+
+3. Getting Help
+
+Commands:
+
+- help | less
+
+- help cd | less
+
+- ls --help
+
+- man -k passwd
+
+- apropos passwd
+
+- info ls

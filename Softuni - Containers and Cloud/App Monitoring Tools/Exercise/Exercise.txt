@@ -1,0 +1,15 @@
+Exercises:
+
+1. Monitor the "Contact Book" Node.js App with Prometheus
+
+Commands:
+
+- .\prometheus --config.file prometheus-contact-book.yml
+
+2. Manage "Contact Book" App Alerts with Alertmanager
+
+Commands:
+
+- .\alertmanager --config.file .\alertmanager-contact-book.yml
+
+- .\prometheus --config.file .\prometheus-contact-book.yml

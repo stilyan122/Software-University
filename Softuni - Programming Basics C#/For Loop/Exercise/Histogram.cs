@@ -19,7 +19,7 @@ namespace Histogram
                 sum ++;
                 if (number < 200)
                 {
-                    s1 ++;
+                    s1++;
                 }
                 else if (number >= 200 && number <= 399)
                 {

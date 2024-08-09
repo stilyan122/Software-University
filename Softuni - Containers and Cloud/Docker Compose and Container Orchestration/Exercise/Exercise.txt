@@ -1,0 +1,113 @@
+Exercises:
+
+1. MariaDB Client and Server in a Network
+
+Commands:
+
+- docker network create mariadb_network
+
+- docker run -d --name mariadb_server --network mariadb_network -e MARIADB_USER=example-user -e MARIADB_PASSWORD=my_cool_secret -e MARIADB_DATABASE=example-database -e MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
+
+- docker run -it --name mariadb_client --network mariadb_network --rm mariadb:latest mariadb -hmariadb_server -uexample-user -p
+
+2. TaskBoard App: Building a Custom Image
+
+Commands:
+
+- docker build . -f .\TaskBoard.WebApp\Dockerfile -t .../taskboard-app
+
+- docker images
+
+- docker login
+
+- docker push .../taskboard-app
+
+3. Tracker App
+
+Commands:
+
+- docker build -t .../tracker-app . 
+
+- docker push .../taskboard-app
+
+- docker run -d --name tracker_app -p 80:80 .../tracker-app
+
+4. TaskBoard App: Connect Containers in a Network
+
+Commands:
+
+- docker network create taskboard_network
+
+- docker network ls
+
+- docker run -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD=yourStrongPassword12# -p 1433:1433 -v sqldata:/var/opt/mssql --rm --network taskboard_network --name sqlserver -d mcr.microsoft.com/mssql/server:latest
+
+- docker build . -f .\TaskBoard.WebApp\Dockerfile -t .../taskboard-app
+
+- docker run --name web_app -p 5000:80 --rm --network taskboard_network .../taskboard-app
+
+- docker network inspect taskboard_network
+
+5. TODO App
+
+Commands:
+
+- docker build . -t backend_image:latest
+
+- docker build . -t frontend_image:latest
+
+- docker network create react-express
+
+- docker network create express-mongo
+
+- docker run --name mongo -d --network express-mongo -v ./data:/data/db mongo:latest
+
+- docker run --name frontend -d --network react-express -p 3000:3000 frontend_image:latest
+
+- docker run --name backend -d --network react-express backend_image:latest
+
+- docker connect express-mongo backend
+
+6. TaskBoard App: Orchestrating Containers with Docker Compose
+
+Commands:
+
+(build compose YAML file)
+
+- docker compose build
+
+- docker compose up
+
+- docker compose down --rmi all --volumes
+
+7. Blue VS Green App
+
+Commands:
+
+(build compose YAML file)
+
+- docker build . -t example-voting-app-result:latest
+
+- docker build . -t example-voting-app-vote:latest
+
+- docker build . -t example-voting-app-worker:latest
+
+- docker compose build
+
+- docker compose up
+
+8. Reseller App
+
+Commands:
+
+- mvn clean package -DskipTests
+
+- docker build -t resellerapp .
+
+- docker compose up -d
+
+9. Fruitipedia App
+
+Commands:
+
+- docker-compose up --build

@@ -1,0 +1,19 @@
+Exercises:
+
+1. Prometheus and Blackbox Exporter: Run Prometheus Server that Monitors SoftUni.org
+
+Commands:
+
+- docker run -p 9115:9115 -d quay.io/prometheus/blackbox-exporter
+
+- .\prometheus --config.file=prometheus-blackbox.yaml
+
+2. Prometheus and Alertmanager
+
+Commands:
+
+- docker run -p 9115:9115 -d quay.io/prometheus/blackbox-exporter
+
+- .\prometheus --config.file=prometheus-blackbox.yaml
+
+- .\alertmanager --config.file .\alertmanager-blackbox.yml
