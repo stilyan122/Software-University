@@ -22,31 +22,38 @@
 
         public List<T> TopView()
         {
-            var dict = new Dictionary<int, (T nodeValue, int nodeLevel)>();
-            this.TopView(this, 0, 0, dict);
-            List<T> result = dict.Values.Select(x => x.nodeValue).ToList();
-            return result;
-        }
+            var result = new List<T>();
+            var queue = new Queue<(BinaryTree<T> node, int hd)>();
+            var topViewMap = new Dictionary<int, T>();
 
-        private void TopView(BinaryTree<T> node, int distance, int level, Dictionary<int, (T nodeValue, int nodeLevel)> dict)
-        {
-            if (node == null)
+            queue.Enqueue((this, 0));
+
+            while (queue.Count > 0)
             {
-                return;
-            }
-            if (dict.ContainsKey(distance))
-            {
-                if (dict[distance].nodeLevel > level)
+                var (node, hd) = queue.Dequeue();
+
+                if (!topViewMap.ContainsKey(hd))
                 {
-                    dict[distance] = (node.Value, level);
+                    topViewMap[hd] = node.Value;
+                }
+
+                if (node.LeftChild != null)
+                {
+                    queue.Enqueue((node.LeftChild, hd - 1));
+                }
+
+                if (node.RightChild != null)
+                {
+                    queue.Enqueue((node.RightChild, hd + 1));
                 }
             }
-            else
+
+            foreach (var value in topViewMap.OrderBy(kvp => kvp.Key).Select(kvp => kvp.Value))
             {
-                dict.Add(distance, (node.Value, level));
+                result.Add(value);
             }
-            this.TopView(node.LeftChild, distance - 1, level + 1, dict);
-            this.TopView(node.RightChild, distance + 1, level + 1, dict);
+
+            return result;
         }
     }
 }

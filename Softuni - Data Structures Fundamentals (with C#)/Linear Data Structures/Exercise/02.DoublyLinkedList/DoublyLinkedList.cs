@@ -6,52 +6,63 @@
 
     public class DoublyLinkedList<T> : IAbstractLinkedList<T>
     {
-        private class Node
+        public class Node<T>
         {
-            public Node(T val,Node n,Node p)
+            public T Value { get; set; }
+
+            public Node<T> Next { get; set; }
+
+            public Node<T> Previous { get; set; }
+
+            public Node(T val, Node<T> next, Node<T> previous)
             {
                 this.Value = val;
-                this.Next = n;
-                this.Previous = p;
+                this.Next = next;
+                this.Previous = previous;
             }
-
-            public T Value { get; set; }
-            public Node Next { get; set; }
-            public Node Previous { get; set; }
         }
 
-        private Node head;
-        private Node tail;
+        private Node<T> _head;
+        private Node<T> _tail;
+
+        public int Count { get; private set; }
 
         public DoublyLinkedList()
         {
             this.Count = 0;
-            this.head = null;
-            this.tail = null;
         }
-
-        public int Count { get; private set; }
 
         public void AddFirst(T item)
         {
-            Node node = new Node(item, this.head, null);
-            if (this.Count == 0)
-                this.tail = node;
-            else
-                this.head.Previous = node;
-            this.head = node;
             this.Count++;
+            var node = new Node<T>(item, null, null);
+
+            if (this.Count == 1)
+            {
+                this._head = this._tail = node;
+                return;
+            }
+
+            var head = this._head;
+
+            this._head.Previous = node;
+            node.Next = head;
+            this._head = node;
         }
 
         public void AddLast(T item)
         {
-            Node node = new Node(item, null, this.tail);
-            if (this.Count == 0)
-                this.head = node;
-            else
-                this.tail.Next = node;
-            this.tail = node;
             this.Count++;
+            var node = new Node<T>(item, null, this._tail);
+
+            if (this.Count == 1)
+            {
+                this._head = this._tail = node;
+                return;
+            }
+
+            this._tail.Next = node;
+            this._tail = node;
         }
 
         public T GetFirst()
@@ -60,10 +71,9 @@
             {
                 throw new InvalidOperationException("List empty!");
             }
-            else
-            {
-                return this.head.Value;
-            }
+
+            var head = this._head;
+            return head.Value;
         }
 
         public T GetLast()
@@ -72,10 +82,9 @@
             {
                 throw new InvalidOperationException("List empty!");
             }
-            else
-            {
-                return this.tail.Value;
-            }
+
+            var tail = this._tail;
+            return tail.Value;
         }
 
         public T RemoveFirst()
@@ -84,15 +93,20 @@
             {
                 throw new InvalidOperationException("List empty!");
             }
-            else
+
+            if (this.Count == 1)
             {
-                Node head = this.head;
-                if (this.Count > 1)
-                    head.Next.Previous = null;
-                this.head = head.Next;
-                this.Count--;
-                return head.Value;
+                var node = this._head;
+                this._head = this._tail = null;
+                this.Count = 0;
+                return node.Value;
             }
+
+            this.Count--;
+            var head = this._head;
+            this._head.Next.Previous = null;
+            this._head = this._head.Next;
+            return head.Value;
         }
 
         public T RemoveLast()
@@ -101,27 +115,33 @@
             {
                 throw new InvalidOperationException("List empty!");
             }
-            else
+
+            if (this.Count == 1)
             {
-                Node tail = this.tail;
-                if(this.Count>1)
-                tail.Previous.Next = null;
-                this.tail = tail.Previous;
-                this.Count--;
-                return tail.Value;
+                var head = this._head;
+                this._head = null;
+                this.Count = 0;
+                return head.Value;
             }
+
+            this.Count--;
+            var tail = this._tail;
+            this._tail.Previous.Next = null;
+            this._tail = this._tail.Previous;
+            return tail.Value;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            Node head = this.head;
-            while (head!=null)
+            var current = this._head;
+            while (current.Next != null)
             {
-                yield return head.Value;
-                head = head.Next;
+                yield return current.Value;
+                current = current.Next;
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+            => this.GetEnumerator();
     }
 }

@@ -6,92 +6,123 @@
 
     public class BinaryTree<T> : IAbstractBinaryTree<T>
     {
-        public BinaryTree(T element, IAbstractBinaryTree<T> left, IAbstractBinaryTree<T> right)
+        private BinaryTree<T> left;
+        private BinaryTree<T> right;
+        private T value;
+
+        public BinaryTree(T element, IAbstractBinaryTree<T> left, 
+            IAbstractBinaryTree<T> right)
         {
             this.Value = element;
             this.LeftChild = left;
             this.RightChild = right;
         }
 
-        public T Value { get; private set; }
+        public T Value { get => this.value; set => this.value = value; }
 
-        public IAbstractBinaryTree<T> LeftChild { get; private set; }
+        public IAbstractBinaryTree<T> LeftChild 
+        { get => this.left; set => this.left = (BinaryTree<T>)value; }
 
-        public IAbstractBinaryTree<T> RightChild { get; private set; }
+        public IAbstractBinaryTree<T> RightChild
+        { get => this.right; set => this.right = (BinaryTree<T>)value; }
 
         public string AsIndentedPreOrder(int indent)
         {
-            return ReturnAsText(new StringBuilder(), this, indent);
-        }
+            StringBuilder sb = new StringBuilder();
 
-        private string ReturnAsText(StringBuilder sb,IAbstractBinaryTree<T> tree,int indent)
-        {
-            sb.Append(new string(' ', indent)).Append(tree.Value).AppendLine();
-            if(tree.LeftChild != null)
-            ReturnAsText(sb, tree.LeftChild, indent + 2);
-            if(tree.RightChild != null)
-            ReturnAsText(sb, tree.RightChild, indent + 2);
+            PreOrderStr(this, sb, indent);
 
             return sb.ToString().Trim();
         }
 
+        private void PreOrderStr(IAbstractBinaryTree<T> current,
+            StringBuilder sb, int indent)
+        {
+            if (current == null)
+            {
+                return;
+            }
+
+            sb.AppendLine($"{new string(' ', indent)}{current.Value}");
+            
+            PreOrderStr(current.LeftChild, sb, indent+2);
+            PreOrderStr(current.RightChild, sb, indent+2);
+        }
+
         public void ForEachInOrder(Action<T> action)
         {
-            if (this.LeftChild != null)
-                this.LeftChild.ForEachInOrder(action);
+            var list = new List<IAbstractBinaryTree<T>>();
 
-            action.Invoke(this.Value);
+            this.InOrder(this, list);
 
-            if (this.RightChild != null)
-                this.RightChild.ForEachInOrder(action);
+            list.ForEach(n => action(n.Value));
         }
 
         public IEnumerable<IAbstractBinaryTree<T>> InOrder()
         {
-            List<IAbstractBinaryTree<T>> result =
-               new List<IAbstractBinaryTree<T>>();
+            var list = new List<IAbstractBinaryTree<T>>();
 
-            if (this.LeftChild != null)
-                result.AddRange(this.LeftChild.InOrder());
-            
-            result.Add(this);
+            InOrder(this, list);
 
-            if (this.RightChild != null)
-                result.AddRange(this.RightChild.InOrder());
+            return list;
+        }
 
-            return result;
+        private void InOrder(IAbstractBinaryTree<T> current,
+            List<IAbstractBinaryTree<T>> list)
+        {
+            if (current == null)
+            {
+                return;
+            }
+
+            InOrder(current.LeftChild, list);
+            list.Add(current);
+            InOrder(current.RightChild, list);
         }
 
         public IEnumerable<IAbstractBinaryTree<T>> PostOrder()
         {
-            List<IAbstractBinaryTree<T>> result =
-               new List<IAbstractBinaryTree<T>>();
+            var list = new List<IAbstractBinaryTree<T>>();
 
-            if (this.LeftChild != null)
-                result.AddRange(this.LeftChild.PostOrder());
+            PostOrder(this, list);
 
-            if (this.RightChild != null)
-                result.AddRange(this.RightChild.PostOrder());
+            return list;
+        }
 
-            result.Add(this);
+        private void PostOrder(IAbstractBinaryTree<T> current,
+            List<IAbstractBinaryTree<T>> list)
+        {
+            if (current == null)
+            {
+                return;
+            }
 
-            return result;
+            PostOrder(current.LeftChild, list);
+            PostOrder(current.RightChild, list);
+            list.Add(current);
         }
 
         public IEnumerable<IAbstractBinaryTree<T>> PreOrder()
         {
-            List<IAbstractBinaryTree<T>> result =
-                new List<IAbstractBinaryTree<T>>();
+            var list = new List<IAbstractBinaryTree<T>>();
 
-            result.Add(this);
+            PreOrder(this, list);
 
-            if (this.LeftChild != null)
-                result.AddRange(this.LeftChild.PreOrder());
+            return list;
+        }
 
-            if (this.RightChild != null)
-                result.AddRange(this.RightChild.PreOrder());
+        private void PreOrder(IAbstractBinaryTree<T> current,
+            List<IAbstractBinaryTree<T>> list)
+        {
+            if (current == null)
+            {
+                return;
+            }
 
-            return result;
+            list.Add(current);
+
+            PreOrder(current.LeftChild, list);
+            PreOrder(current.RightChild, list);
         }
     }
 }

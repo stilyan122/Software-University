@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace _03.MinHeap
 {
@@ -14,108 +14,84 @@ namespace _03.MinHeap
             this.elements = new List<T>();
         }
 
-        public int Size => this.elements.Count;
-
+        public int Count => this.elements.Count;
 
         public void Add(T element)
         {
             this.elements.Add(element);
-            this.HeapifyUp(this.Size - 1);
+            var childIndex = this.elements.Count - 1;
+
+            this.HeapifyUp(childIndex);
+        }
+
+        protected void HeapifyUp(int childIndex)
+        {
+            while (childIndex > 0)
+            {
+                int parentIndex = (childIndex - 1) / 2;
+                if (this.elements[childIndex].CompareTo(this.elements[parentIndex]) >= 0)
+                    break;
+
+                (this.elements[parentIndex], this.elements[childIndex]) =
+                    (this.elements[childIndex], this.elements[parentIndex]);
+
+                childIndex = parentIndex;
+            }
         }
 
         public T ExtractMin()
         {
-            this.ValidateIfEmpty();
-
-            T firstElement = this.elements[0];
-
-            this.Swap(0, this.Size - 1);
-
-            this.elements.RemoveAt(this.Size - 1);
+            var root = this.Peek();
+            this.elements[0] = this.elements.Last();
+            this.elements.RemoveAt(this.elements.Count - 1);
 
             this.HeapifyDown(0);
 
-            return firstElement;
+            return root;
         }
 
-        private void HeapifyDown(int index)
+        private void HeapifyDown(int parentIndex)
         {
-            var smallerChildIndex = this.GetSmallerChildIndex(index);
-
-            while (IsIndexValid(smallerChildIndex) && this.IsGreater(index, smallerChildIndex))
+            while (true)
             {
-                this.Swap(smallerChildIndex, index);
+                int leftChildIndex = 2 * parentIndex + 1;
+                int rightChildIndex = 2 * parentIndex + 2;
+                int smallestChildIndex = parentIndex;
 
-                index = smallerChildIndex;
-                smallerChildIndex = this.GetSmallerChildIndex(index);
-            }
-        }
-
-        protected bool IsIndexValid(int index)
-        {
-            return index >= 0 && index < this.elements.Count;
-        }
-
-        protected int GetSmallerChildIndex(int index)
-        {
-            var firstChildIndex = index * 2 + 1;
-            var secondChildIndex = index * 2 + 2;
-
-            if (secondChildIndex < this.elements.Count)
-            {
-                if (this.IsGreater(secondChildIndex, firstChildIndex))
+                if (leftChildIndex < this.Count &&
+                    this.elements[leftChildIndex]
+                    .CompareTo(this.elements[smallestChildIndex]) < 0)
                 {
-                    return firstChildIndex;
+                    smallestChildIndex = leftChildIndex;
                 }
 
-                return secondChildIndex;
-            }
-            else if (firstChildIndex < this.elements.Count)
-            {
-                return firstChildIndex;
-            }
-            else
-            {
-                return -1;
-            }
-        }
+                if (rightChildIndex < this.Count &&
+                    this.elements[rightChildIndex]
+                    .CompareTo(this.elements[smallestChildIndex]) < 0)
+                {
+                    smallestChildIndex = rightChildIndex;
+                }
 
-        protected bool IsGreater(int index, int parentIndex)
-        {
-            return this.elements[index]
-                .CompareTo(this.elements[parentIndex]) > 0;
-        }
+                if (smallestChildIndex == parentIndex)
+                    break;
 
-        protected void ValidateIfEmpty()
-        {
-            if (this.Size == 0)
-            {
-                throw new InvalidOperationException();
+                (this.elements[parentIndex], this.elements[smallestChildIndex]) =
+                    (this.elements[smallestChildIndex], this.elements[parentIndex]);
+
+                parentIndex = smallestChildIndex;
             }
-        }
-
-        private void HeapifyUp(int index)
-        {
-            int parentIndex = (index - 1) / 2;
-            while (index > 0 && IsGreater(parentIndex, index))
-            {
-                this.Swap(index, parentIndex);
-                index = parentIndex;
-                parentIndex = (index - 1) / 2;
-            }
-        }
-
-        protected void Swap(int index, int parentIndex)
-        {
-            var temp = this.elements[index];
-            this.elements[index] = this.elements[parentIndex];
-            this.elements[parentIndex] = temp;
         }
 
         public T Peek()
         {
-            this.ValidateIfEmpty();
+            if (this.Count == 0)
+            {
+                throw new InvalidOperationException("Heap empty!");
+            }
+
             return this.elements[0];
         }
+
+        public List<T> Elements => this.elements;
     }
 }

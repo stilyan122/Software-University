@@ -3,37 +3,45 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Reflection;
 
     public class ReversedList<T> : IAbstractList<T>
     {
         private const int DefaultCapacity = 4;
-        private T[] _items;
+
+        private T[] items;
 
         public ReversedList()
             : this(DefaultCapacity) { }
 
- 
         public ReversedList(int capacity)
         {
             if (capacity < 0)
-            {
                 throw new ArgumentOutOfRangeException(nameof(capacity));
-            }
 
-            this._items = new T[capacity];
+            this.items = new T[capacity];
         }
 
         public T this[int index]
         {
             get
             {
-                this.ValidateIndex(index);
-                return this._items[this.Count - 1 - index];
+                if (index < 0 || index >= this.Count)
+                {
+                    throw new IndexOutOfRangeException("Invalid index!");
+                }
+
+                index = this.Count - index - 1;
+                return this.items[index];
             }
             set
             {
-                this.ValidateIndex(index);
-                this._items[index] = value;
+                if (index < 0 || index >= this.Count)
+                {
+                    throw new IndexOutOfRangeException("Invalid index!");
+                }
+
+                this.items[index] = value;
             }
         }
 
@@ -41,23 +49,37 @@
 
         public void Add(T item)
         {
-            this.GrowIfNeeded();
-            this._items[this.Count++] = item;
+            if (this.Count == this.items.Length)
+            {
+                this.Grow();
+            }
+
+            this.items[this.Count] = item;
+            this.Count++;
         }
 
         public bool Contains(T item)
         {
-            return this.IndexOf(item) != -1;
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this.items[i].Equals(item))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public int IndexOf(T item)
         {
-            for (int i = 1; i <= this.Count; i++)
+            for (int i = this.Count - 1; i >= 0; i--)
             {
-                if (this._items[this.Count - i].Equals(item))
+                if (this.items[i].Equals(item))
                 {
-                    return i - 1;
-                }   
+                    var index = this.Count - i - 1;
+                    return index;
+                }
             }
 
             return -1;
@@ -65,41 +87,52 @@
 
         public void Insert(int index, T item)
         {
-            this.GrowIfNeeded();
-            this.ValidateIndex(index);
-            int indexToInsert = this.Count - index;
-            for (int i = this.Count; i > indexToInsert; i--)
+            if (index < 0 || index >= this.Count)
             {
-                this._items[i] = this._items[i - 1];
+                throw new IndexOutOfRangeException("Index out of range!");
             }
 
-            this._items[indexToInsert] = item;
+            index = this.Count - index;
+
+            if (this.Count == this.items.Length)
+            {
+                this.Grow();
+            }
+
+            for (int i = this.Count; i >= index; i--)
+            {
+                this.items[i] = this.items[i - 1];
+            }
+
+            this.items[index] = item;
             this.Count++;
         }
 
         public bool Remove(T item)
         {
-            int index = this.IndexOf(item);
+            var index = this.IndexOf(item);
 
-            if (index == -1)
+            if (index != -1)
             {
-                return false;
+                this.RemoveAt(index);
             }
 
-            this.RemoveAt(index);
-            return true;
+            return index != -1;
         }
 
         public void RemoveAt(int index)
         {
-            this.ValidateIndex(index);
-            int indexToRemove = this.Count - 1 - index;
-            for (int i = indexToRemove; i < this.Count - 1; i++)
+            if (index < 0 || index >= this.Count)
             {
-                this._items[i] = this._items[i + 1];
+                throw new IndexOutOfRangeException("Index out of range!");
+            }
+            for (int i = this.Count - index - 1; i < this.Count; i++)
+            {
+                this.items[i] = this.items[i + 1];
             }
 
-            this._items[this.Count - 1] = default;
+            this.items[this.Count - 1] = default(T); 
+
             this.Count--;
         }
 
@@ -107,37 +140,28 @@
         {
             for (int i = this.Count - 1; i >= 0; i--)
             {
-                yield return this._items[i];
+                yield return this.items[i];
             }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
-
-        private void GrowIfNeeded()
-        {
-            if (this.Count == this._items.Length)
-            {
-                this.Grow();
-            }
-        }
+            => this.GetEnumerator();
 
         private void Grow()
         {
-            T[] newItems = new T[this._items.Length * 2];
-            Array.Copy(this._items, newItems, this._items.Length);
-            this._items = newItems;
+            var newArr = new T[this.items.Length * 2];
+            this.items.CopyTo(newArr, 0);
+            this.items = newArr;
         }
 
-        private void ValidateIndex(int index)
+        private void Shrink() 
         {
-            if (index < 0 || index >= this.Count)
+            var newArr = new T[this.items.Length / 2];
+            for (int i = 0; i < this.Count; i++)
             {
-                throw new IndexOutOfRangeException("Index is outside the bounds of this list!");
+                newArr[i] = this.items[i];
             }
+            this.items = newArr;
         }
-
     }
 }

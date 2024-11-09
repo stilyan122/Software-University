@@ -1,47 +1,37 @@
-﻿namespace Problem04.BalancedParentheses
-{
-    using System;
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace Problem04.BalancedParentheses
+{
     public class BalancedParenthesesSolve : ISolvable
     {
         public bool AreBalanced(string parentheses)
         {
-            if (parentheses.Length % 2 != 0)
-            {
-                return false;
-            }
-            Stack<char> stack = new Stack<char>(parentheses.Length/2);
-            foreach (var character in parentheses)
-            {
-                char expected = default;
-                switch (character)
-                {
-                    case ')':
-                        expected = '(';
-                    break;
+            var items = new Stack<char>();
 
-                    case ']':
-                        expected = '[';
-                        break;
-
-                    case '}':
-                        expected = '{';
-                        break;
-                    default:
-                        stack.Push(character);
-                        break;
-                }
-                if (expected == default)
+            foreach (char parenthesis in parentheses)
+            {
+                if (IsOpening(parenthesis))
                 {
-                    continue;
+                    items.Push(parenthesis);
                 }
-                if (expected != stack.Pop())
+                else
                 {
-                    return false;   
+                    if (items.Count == 0 || !AreMatching(items.Pop(), parenthesis))
+                    {
+                        return false;
+                    }
                 }
             }
-            return stack.Count==0;
+
+            return items.Count == 0;
         }
+
+        private bool IsOpening(char parenthesis)
+            => parenthesis == '(' || parenthesis == '[' || parenthesis == '{';
+
+        private bool AreMatching(char parenthesis1, char parenthesis2)
+            => (parenthesis1 == '(' && parenthesis2 == ')') ||
+               (parenthesis1 == '[' && parenthesis2 == ']') ||
+               (parenthesis1 == '{' && parenthesis2 == '}');
     }
 }

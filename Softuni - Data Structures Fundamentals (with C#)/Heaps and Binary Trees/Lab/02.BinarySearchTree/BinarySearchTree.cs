@@ -5,124 +5,141 @@
     public class BinarySearchTree<T> : IBinarySearchTree<T>
         where T : IComparable<T>
     {
+        public BinarySearchTree<T> Root { get; set; }
+        public T Value { get; set; }
+        public BinarySearchTree<T> LeftChild { get; set; }
+        public BinarySearchTree<T> RightChild { get; set; }
+
+        public BinarySearchTree(T value, BinarySearchTree<T> leftChild,
+            BinarySearchTree<T> rightChild)
+        {
+            Value = value;
+            LeftChild = leftChild;
+            RightChild = rightChild;
+            Root = this;
+        }
+
         public BinarySearchTree()
         {
-             
+            
         }
-        private BinarySearchTree(Node node)
-        {
-            this.PreOrderCopy(node);
-        }
-
-        private void PreOrderCopy(Node node)
-        {
-            if (node == null)
-            {
-                return;
-            }
-
-            this.Insert(node.Value);
-            this.PreOrderCopy(node.LeftChild);
-            this.PreOrderCopy(node.RightChild);
-        }
-
-        public class Node
-        {
-            public Node(T value)
-            {
-                this.Value = value;
-            }
-
-            public T Value { get; set; }
-            public Node LeftChild { get; set; }
-            public Node RightChild { get; set; }
-        }
-
-        private Node root;
 
         public bool Contains(T element)
         {
-            return this.FindNode(element) != null;
+            var result = ContainsDFS(element, this.Root);
+
+            return result;
+        }
+
+        private bool ContainsDFS(T element, BinarySearchTree<T> current)
+        {
+            if (current == null)
+            {
+                return false;
+            }
+
+            var comparison = element.CompareTo(current.Value);
+
+            if (comparison == -1)
+            {
+                return ContainsDFS(element, current.LeftChild);
+            }
+            else if (comparison == 1)
+            {
+                return ContainsDFS(element, current.RightChild);
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void EachInOrder(Action<T> action)
         {
-            this.EachInOrder(action, this.root);
+            EachInOrderDFS(action, this.Root);
         }
 
-        private void EachInOrder(Action<T> action, Node node)
+        private void EachInOrderDFS(Action<T> action, BinarySearchTree<T> current)
         {
-            if (node == null)
+            if (current == null)
             {
                 return;
             }
 
-            this.EachInOrder(action, node.LeftChild);
+            EachInOrderDFS(action, current.LeftChild);
 
-            action.Invoke(node.Value);
+            action(current.Value);
 
-            this.EachInOrder(action, node.RightChild);
+            EachInOrderDFS(action, current.RightChild);
         }
 
         public void Insert(T element)
         {
-            this.root = this.Insert(element, this.root);
+            if (this.Root == null)
+            {
+                this.Root = new BinarySearchTree<T>()
+                {
+                    Value = element
+                };
+            }
+            else
+            {
+                InsertDFS(element, this.Root);
+            }
         }
 
-        private Node Insert(T element, Node node)
+        private void InsertDFS(T element, BinarySearchTree<T> current)
         {
-            if (node == null)
+            var comparison = element.CompareTo(current.Value);
+
+            if (comparison == -1)
             {
-                node = new Node(element);
-            }
-
-            else if (element.CompareTo(node.Value) < 0)
-            {
-                node.LeftChild = this.Insert(element, node.LeftChild);
-            }
-
-            else if (element.CompareTo(node.Value) > 0)
-            {
-                node.RightChild = this.Insert(element, node.RightChild);
-            }
-
-            return node;
-        }
-
-        private Node FindNode(T element)
-        {
-            var node = this.root;
-
-            while (node != null)
-            {
-                if (element.CompareTo(node.Value) < 0)
+                if (current.LeftChild == null)
                 {
-                    node = node.LeftChild;
+                    current.LeftChild = new BinarySearchTree<T>(element, null, null);
+                    return;
                 }
-                else if (element.CompareTo(node.Value) > 0)
-                {
-                    node = node.RightChild;
-                }
-                else
-                {
-                    break;
-                }
+                InsertDFS(element, current.LeftChild);
             }
-
-            return node;
-
+            else if (comparison == 1)
+            {
+                if (current.RightChild == null)
+                {
+                    current.RightChild = new BinarySearchTree<T>(element, null, null);
+                    return;
+                }
+                InsertDFS(element, current.RightChild);
+            }
         }
 
         public IBinarySearchTree<T> Search(T element)
         {
-            var node = this.FindNode(element);
+            var result = SearchDFS(element, this.Root);
 
-            if (node == null)
+            return result;
+        }
+
+        private BinarySearchTree<T> SearchDFS(T element, BinarySearchTree<T> current)
+        {
+            if (current == null)
             {
                 return null;
             }
 
-            return new BinarySearchTree<T>(node);
+            var comparison = element.CompareTo(current.Value);
+
+            if (comparison == -1)
+            {
+                return SearchDFS(element, current.LeftChild);
+            }
+            else if (comparison == 1)
+            {
+                return SearchDFS(element, current.RightChild);
+            }
+            else
+            {
+                return current;
+            }
         }
     }
 }

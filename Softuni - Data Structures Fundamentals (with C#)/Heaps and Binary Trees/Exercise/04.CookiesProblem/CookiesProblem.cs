@@ -1,34 +1,41 @@
-﻿using Wintellect.PowerCollections;
+﻿using System;
+using System.Linq;
+using _03.MinHeap;
+using Wintellect.PowerCollections;
 
 namespace _04.CookiesProblem
 {
     public class CookiesProblem
     {
-        public int Solve(int k, int[] cookies)
+        private MinHeap<int> cookies = new MinHeap<int>();
+
+        public int Solve(int minSweetness, int[] cookies)
         {
-            var priorityQueue = new OrderedBag<int>();
+            var result = 0;
 
             foreach (var cookie in cookies)
             {
-                priorityQueue.Add(cookie);
+                this.cookies.Add(cookie);
             }
-            
-            int currentMinSweetness = priorityQueue[0];
-            int steps = 0;
-            while (currentMinSweetness < k && priorityQueue.Count > 1)
+
+            while (this.cookies.Count > 1 && this.cookies.Peek() < minSweetness)
             {
-                int leastSweetCooke = priorityQueue.RemoveFirst();
-                int secondLeastSweetCookie = priorityQueue.RemoveFirst();
+                var firstCookie = this.cookies.ExtractMin();
+                var secondCookie = this.cookies.ExtractMin();
 
-                int combined = leastSweetCooke + 2 * secondLeastSweetCookie;
+                var combinedCookie = firstCookie + 2 * secondCookie;
 
-                priorityQueue.Add(combined);
+                this.cookies.Add(combinedCookie);
 
-                currentMinSweetness = priorityQueue[0];
-                steps++;
+                result++;
             }
 
-            return currentMinSweetness < k ? -1 : steps;
+            if (this.cookies.Peek() < minSweetness)
+            {
+                return -1;
+            }
+
+            return result;
         }
-    }
+}
 }

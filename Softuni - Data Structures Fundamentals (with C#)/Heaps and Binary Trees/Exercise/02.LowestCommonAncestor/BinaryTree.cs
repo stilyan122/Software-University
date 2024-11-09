@@ -33,80 +33,117 @@
 
         public BinaryTree<T> Parent { get; set; }
 
+        private BinaryTree<T> FindLCA(BinaryTree<T> node, T first, T second)
+        {
+            if (node == null)
+            {
+                return null;
+            }
+
+            if (node.Value.Equals(first) || node.Value.Equals(second))
+            {
+                return node;
+            }
+
+            BinaryTree<T> leftLCA = FindLCA(node.LeftChild, first, second);
+            BinaryTree<T> rightLCA = FindLCA(node.RightChild, first, second);
+
+            if (leftLCA != null && rightLCA != null)
+            {
+                return node;
+            }
+
+            return leftLCA ?? rightLCA;
+        }
+
         public T FindLowestCommonAncestor(T first, T second)
         {
-            var firstNode = this.FindNodeBfs(first, this);
-            var secondNode = this.FindNodeBfs(second, this);
-
-            if(firstNode == null || secondNode == null)
-            {
-                throw new InvalidOperationException();
-            }
-
-            var firstNodeAncestors = this.FindNodeAllAncestors(firstNode);
-            var secondNodeAncestors = this.FindNodeAllAncestors(secondNode);
-
-            var currentEl = firstNodeAncestors.Dequeue();
-
-            while (firstNodeAncestors.Count > 0)
-            {
-                if (secondNodeAncestors.Contains(currentEl))
-                {
-                    return currentEl;
-                }
-
-                currentEl = firstNodeAncestors.Dequeue();
-            }
-
-            return currentEl;
+            return FindLCA(this, first, second).Value;
         }
 
-        private Queue<T> FindNodeAllAncestors(IAbstractBinaryTree<T> node)
-        {
-            var nodeAncestors = new Queue<T>();
-            var current = node;
+        // My attempt (with throwing exceptions unlike other)
+        //    var firstNode = FindBinaryTree(this, first);
+        //    var secondNode = FindBinaryTree(this, second);
 
-            while (current != null)
+        //        if (firstNode == null || secondNode == null)
+        //        {
+        //            throw new InvalidOperationException("Exception thrown!");
+        //}
+        //        if (firstNode.Value.Equals(this.Value) || secondNode.Value.Equals(this.Value))
+        //        {
+        //    return this.Value;
+        //}
+
+        //        if (firstNode.Parent.Value.Equals(secondNode.Value))
+        //        {
+        //    return secondNode.Value;
+        //}
+        //        else if (secondNode.Parent.Value.Equals(firstNode.Value))
+        //        {
+        //    return firstNode.Value;
+        //}
+        //        else
+        //        {
+        //    var firstNodeParents = FindParents(firstNode);
+        //    var secondNodeParents = FindParents(secondNode);
+
+        //    if (firstNodeParents.Count > secondNodeParents.Count)
+        //    {
+        //        foreach (var item in secondNodeParents)
+        //        {
+        //            if (firstNodeParents.Contains(item))
+        //            {
+        //                return item.Value;
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        foreach (var item in firstNodeParents)
+        //        {
+        //            if (secondNodeParents.Contains(item))
+        //            {
+        //                return item.Value;
+        //            }
+        //        }
+        //    }
+        //}
+
+        //        throw new InvalidOperationException("Exception thrown!");
+
+        private BinaryTree<T> FindBinaryTree(BinaryTree<T> root, T nodeValue)
             {
-                nodeAncestors.Enqueue(current.Value);
-                current = current.Parent;
+                if (root == null)
+                {
+                    return null;
+                }
+
+                var comparison = nodeValue.CompareTo(root.Value);
+
+                if (comparison > 0)
+                {
+                    return FindBinaryTree(root.RightChild, nodeValue);
+                }
+                else if (comparison < 0)
+                {
+                    return FindBinaryTree(root.LeftChild, nodeValue);
+                }
+
+                return root;
             }
-
-            return nodeAncestors;
-        }
-
-        private IAbstractBinaryTree<T> FindNodeBfs(T element, IAbstractBinaryTree<T> tree)
-        {
-            var queue = new Queue<IAbstractBinaryTree<T>>();
-
-            queue.Enqueue(tree);
-
-            while (queue.Count > 0)
+        
+            private List<BinaryTree<T>> FindParents(BinaryTree<T> root)
             {
-                var current = queue.Dequeue();
+                var list = new List<BinaryTree<T>>() { root };
 
-                if (this.AreEqual(element, current.Value))
+                while (root.Parent != null)
                 {
-                    return current;
+                    list.Add(root.Parent);
+
+                    root = root.Parent;
                 }
 
-                if (current.LeftChild != null)
-                {
-                    queue.Enqueue(current.LeftChild);
-                }
-
-                if (current.RightChild != null)
-                {
-                    queue.Enqueue(current.RightChild);
-                }
+                return list;
             }
-
-            return null;
         }
-
-        private bool AreEqual(T first, T second)
-        {
-            return first.CompareTo(second) == 0;
-        }
-    }
 }

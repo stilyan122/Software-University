@@ -5,7 +5,7 @@
     public interface IAbstractHeap<T>
       where T : IComparable<T>
     {
-        int Size { get; }
+        int Count { get; }
 
         void Add(T element);
 
