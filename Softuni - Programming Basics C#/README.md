@@ -1,6 +1,20 @@
 ## About the course:
 ## Programming Basics with C# provides entry-level programming skills required for all technology majors. This includes writing entry-level programming code (basic coding skills), working with a development environment (IDE), using variables and data, operators and expressions, working with the console (reading input and printing results), using of conditional constructions (if, if-else) and loops (for, while, do-while).
 
+## Skills you will acquire:
+
+### Working with the console (data input and output)
+
+### Working with loops (for, while)
+
+### Working with more complex logical checks
+
+### Working with logical checks (if-else)
+
+### Performing simple calculations
+
+### Working with more complex loops (nested for loops and while)
+
 ## The solutions to the tasks can be checked in: https://judge.softuni.org 
 
 ## https://softuni.bg
