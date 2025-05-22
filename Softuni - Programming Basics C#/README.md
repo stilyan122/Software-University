@@ -6,4 +6,5 @@
 ## https://softuni.bg
 
 ![image](https://user-images.githubusercontent.com/117260079/220763573-6cf64461-aaa4-4400-b031-cfaa156eba06.png)
-![Programming Basics - November 2020 - Certificate](https://user-images.githubusercontent.com/117260079/220763857-00577ee0-c16a-4936-bca0-dfa77d0bcece.jpeg)
+
+![Programming Basics - July 2024 - Certificate](https://github.com/user-attachments/assets/bec43ff2-713c-4845-ba00-9746c0d9440e)
