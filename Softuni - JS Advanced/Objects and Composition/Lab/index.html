@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FromJSONToHTMLTable</title>
+    <style>
+        table,th{
+            border: groove;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+        }
+        td,th{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+    </div>
+    <script>
+        function fromJSONToHTMLTable(input) {
+            const data = JSON.parse(input);
+
+            const escapeHTML = (text) => {
+                return text
+                    .trim()
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            };
+
+            const cleanedData = data.map((row) => {
+                const cleanedRow = {};
+                for (const [key, value] of Object.entries(row)) {
+                    const trimmedKey = key.trim();
+                    const trimmedValue = typeof value === "string" ? escapeHTML(value) : value;
+                    cleanedRow[trimmedKey] = trimmedValue;
+                }
+                return cleanedRow;
+            });
+
+            let html = "<table>\n";
+
+            const headers = Object.keys(cleanedData[0]);
+
+            html += "  <tr>";
+
+            headers.forEach((header) => {
+                html += `<th>${escapeHTML(header)}</th>`;
+            });
+
+            html += "</tr>\n";
+
+            clea.forEach((row) => {
+                html += "  <tr>";
+
+                headers.forEach((key) => {
+                    const value = row[key];
+                    html += `<td>${typeof value === "string" ? escapeHTML(value) : value}</td>`;
+                });
+
+                html += "</tr>\n";
+            });
+
+            html += "</table>";
+
+            return html;
+        }
+
+        window.onload = function()
+        {
+            let container = document.getElementById('wrapper');
+            container.innerHTML = fromJSONToHTMLTable(`[{"Name":"Pesho",
+                    "Score":4,
+                    " Grade":8},
+                    {"Name":"Gosho",
+                    "Score":5,
+                    " Grade":8},
+                    {"Name":"Angel",
+                    "Score":5.50,
+                    " Grade":10}]`
+                    );
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="template.css">
+	<title>SUDOMU</title>
+</head>
+
+<body>
+	<div id="container">
+		<main id="main">
+			<div id="exercise">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="9">SUDOMU</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="9">
+								<button>Quick Check</button>
+								<button>Clear</button>
+							</td>
+						</tr>
+					</tfoot>
+					<tbody>
+
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+						<tr>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+							<td><input type="number" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div id="check">
+					<p></p>
+				</div>
+			</div>
+		</main>
+
+	</div>
+	<script>
+		function checkForValidSudoku(sudokuArray){
+			let sudoku = sudokuArray.map(x => x.split(' ').map(Number));
+			let isValid = true;
+
+			for (let i = 0; i < 9; i++) {
+				let row = new Set();
+				let col = new Set();
+				let square = new Set();
+
+				for (let j = 0; j < 9; j++) {
+					let rowCell = sudoku[i][j];
+					let colCell = sudoku[j][i];
+					let squareCell = sudoku[3 * Math.floor(i / 3) + Math.floor(j / 3)][3 * (i % 3) + j % 3];
+
+					if (row.has(rowCell) || col.has(colCell) || square.has(squareCell)) {
+						isValid = false;
+						break;
+					}
+
+					row.add(rowCell);
+					col.add(colCell);
+					square.add(squareCell);
+				}
+
+				if (!isValid) {
+					break;
+				}
+			}
+
+			return isValid;
+		}
+
+		let container = document.getElementById('exercise');
+		let table = container.getElementsByTagName('table')[0];
+
+		let tfoot = table.getElementsByTagName('tfoot')[0];
+		let tbody = table.getElementsByTagName('tbody')[0];
+
+		let checkDiv = document.getElementById('check');
+		let checkText = checkDiv.getElementsByTagName('p')[0];
+
+		let checkButton = tfoot.getElementsByTagName('button')[0];
+		let clearButton = tfoot.getElementsByTagName('button')[1];
+
+		let inputs = tbody.getElementsByTagName('input');
+
+		checkButton.addEventListener('click', function () {
+			let inputValuesAsArray = Array.from(inputs).map(x => x.value);
+			let validSudoku = checkForValidSudoku(inputValuesAsArray);
+		
+			if (validSudoku){
+				table.style.border = '2px solid green';
+				checkText.textContent = 'You solve it! Congratulations!';
+				checkText.style.color = 'green';
+			} else {
+				table.style.border = '2px solid red';
+				checkText.textContent = 'NOP! You are not done yet...';
+				checkText.style.color = 'red';
+			}
+		});
+
+		clearButton.addEventListener('click', function () {
+			Array.from(inputs).map(x => x.value = '');
+			table.style.border = '';
+			checkButton.style.color = '';
+			checkText.textContent = '';
+		});
+	</script>
+</body>
+
+</html>
